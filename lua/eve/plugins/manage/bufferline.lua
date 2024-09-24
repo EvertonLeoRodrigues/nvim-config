@@ -3,6 +3,10 @@ return {
 	dependencies = "nvim-tree/nvim-web-devicons",
 	opts = { version = "*", event = "UIEnter" },
 	config = function(opts)
+		local highlights = require("nord").bufferline.highlights({
+			italic = true,
+			bold = true,
+		})
 		vim.opt.termguicolors = true
 
 		local bufferline = require("bufferline")
@@ -42,7 +46,7 @@ return {
 				truncate_names = true, -- whether or not tab names should be truncated
 				tab_size = 18,
 				diagnostics = "nvim_lsp",
-                --diagnostics_update_in_insert = true,
+				--diagnostics_update_in_insert = true,
 				-- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
 				diagnostics_indicator = function(count, level, diagnostics_dict, context)
 					return "(" .. count .. ")"
@@ -105,7 +109,13 @@ return {
 				},
 				sort_by = "insert_at_end",
 			},
+			highlights = highlights,
 		})
+
+		local keymap = vim.keymap
+		keymap.set("n", "<leader>pi", ":BufferLinePick<cr>")
+		keymap.set("n", "<leader>pc", ":BufferLinePickClose<cr>")
+		keymap.set("n", "<leader>pn", ":BufferLineCycleNext<cr>")
+		keymap.set("n", "<leader>pp", ":BufferLineCyclePrev<cr>")
 	end,
 }
-
