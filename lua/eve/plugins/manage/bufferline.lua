@@ -117,5 +117,7 @@ return {
 		keymap.set("n", "<leader>pc", ":BufferLinePickClose<cr>")
 		keymap.set("n", "<leader>pn", ":BufferLineCycleNext<cr>")
 		keymap.set("n", "<leader>pp", ":BufferLineCyclePrev<cr>")
+		keymap.set("n", "<leader>p[", ":BufferLineCloseLeft<cr>")
+		keymap.set("n", "<leader>p]", ":BufferLineCloseRight<cr>")
 	end,
 }
