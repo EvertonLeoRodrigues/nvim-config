@@ -87,6 +87,22 @@ return {
 						"RenderMarkdownH6",
 					},
 				},
+				quote = {
+					-- Turn on / off block quote & callout rendering
+					enabled = true,
+					-- Replaces '>' of 'block_quote'
+					icon = "▋",
+					-- Whether to repeat icon on wrapped lines. Requires neovim >= 0.10. This will obscure text if
+					-- not configured correctly with :h 'showbreak', :h 'breakindent' and :h 'breakindentopt'. A
+					-- combination of these that is likely to work is showbreak = '  ' (2 spaces), breakindent = true,
+					-- breakindentopt = '' (empty string). These values are not validated by this plugin. If you want
+					-- to avoid adding these to your main configuration then set them in win_options for this plugin.
+					repeat_linebreak = false,
+					breakindent = true,
+					breakindentopt = "",
+					-- Highlight for the quote icon
+					highlight = "RenderMarkdownQuote",
+				},
 			})
 			vim.g.render_markdown_template = [[
 <!DOCTYPE html>
