@@ -41,6 +41,7 @@ return {
 				"yaml",
 				"json",
 				"dockerfile",
+				"latex",
 			},
 			incremental_selection = {
 				enable = true,

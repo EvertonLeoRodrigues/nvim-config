@@ -1,9 +1,8 @@
-require "eve.options"
-require "eve.keymaps"
-require "eve.lazy"
+require("eve.options")
+require("eve.keymaps")
+require("eve.lazy")
 
-function OpenMarkdownPreview(url)
-  vim.fn.jobstart({"firefox", "--new-window", url}, {detach = true})
-end
-
-vim.g.mkdp_browserfunc = 'OpenMarkdownPreview'
+vim.cmd([[
+  hi CursorLine ctermfg=none ctermbg=none cterm=none gui=none
+  hi CursorLineNr ctermfg=15 ctermbg=none cterm=none gui=none
+]])

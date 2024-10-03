@@ -1,7 +1,7 @@
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
-	priority = 1001,
+	priority = 1002,
 	config = function()
 		local mocha = require("catppuccin")
 		mocha.setup({
