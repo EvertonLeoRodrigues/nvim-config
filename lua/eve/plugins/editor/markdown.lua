@@ -1,4 +1,4 @@
--- plugins for notetaking and knowledge management
+-- plugins for notetaking and knowledge managementmark
 
 return {
 	-- install with yarn or npm
@@ -113,33 +113,6 @@ return {
 					bottom_pad = 0,
 				},
 			})
-			vim.g.render_markdown_template = [[
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-  	
-#add8e6                   {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
-        });
-    </script>
-</head>
-<body>
-{{content}}
-</body>
-</html>
-]]
 		end,
 	},
 	{
@@ -187,6 +160,8 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
+			"hrsh7th/nvim-cmp",
+			"nvim-treesitter",
 		},
 		config = function()
 			local obs = require("obsidian")
@@ -195,13 +170,19 @@ return {
 					{
 						name = "Everton",
 						path = "/home/evesantos/Documents/Eve",
+            -- strict = true,
 					},
+					-- {
+					-- 	name = "Notes",
+					-- 	path = "/home/evesantos/Documents/Eve/notes/", -- Path to "Notes" workspace
+					--        strict = true,
+					-- },
 				},
 				completion = {
 					nvim_cmp = true,
 					min_chars = 2,
 				},
-				new_notes_location = "notes_subdir",
+
 				note_id_func = function(title)
 					return title and title:gsub(" ", "_"):lower() or tostring(os.time())
 				end,
@@ -216,10 +197,23 @@ return {
 
 					return out
 				end,
-				mappings = {},
+
+				daily_notes = {
+          -- workspace = "Notes",
+					-- Optional, if you keep daily notes in a separate directory.
+					folder = "notes/.diario/",
+					-- Optional, if you want to change the date format for the ID of daily notes.
+					date_format = "%Y-%m-%d",
+					-- Optional, if you want to change the date format of the default alias of daily notes.
+					alias_format = "%B %-d, %Y",
+					-- Optional, default tags to add to each new daily note created.
+					default_tags = { "daily-notes" },
+					-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+					template = nil,
+				},
 
 				templates = {
-					subdir = "Templates",
+					subdir = "Templates", -- Ensure templates are used from the right directory
 					date_format = "%Y-%m-%d",
 					time_format = "%H:%M",
 					tags = "",
@@ -234,7 +228,7 @@ return {
 				},
 
 				ui = {
-					enable = false, -- using render-markdown.nvim instead
+					enable = false, -- Disable UI if not needed
 				},
 			})
 		end,

@@ -16,12 +16,12 @@ opt.number = true
 -- ]])
 
 vim.cmd([[
-  highlight RenderMarkdownH1 guifg=#ff5555 guibg=NONE gui=bold
-  highlight RenderMarkdownH2 guifg=#50fa7b guibg=NONE gui=bold
-  highlight RenderMarkdownH3 guifg=#f1fa8c guibg=NONE gui=bold
-  highlight RenderMarkdownH4 guifg=#bd93f9 guibg=NONE gui=bold
-  highlight RenderMarkdownH5 guifg=#ff79c6 guibg=NONE gui=bold
-  highlight RenderMarkdownH6 guifg=#8be9fd guibg=NONE gui=bold
+  highlight RenderMarkdownH1 guifg=#000000 guibg=NONE gui=bold
+  highlight RenderMarkdownH2 guifg=#8f250c guibg=NONE gui=bold
+  highlight RenderMarkdownH3 guifg=#e36414 guibg=NONE gui=bold
+  highlight RenderMarkdownH4 guifg=#3c096c guibg=NONE gui=bold
+  highlight RenderMarkdownH5 guifg=#67693a guibg=NONE gui=bold
+  highlight RenderMarkdownH6 guifg=#0c4767 guibg=NONE gui=bold
 ]])
 
 opt.tabstop = 2
