@@ -1,6 +1,6 @@
 return {
 	"akinsho/bufferline.nvim",
-	dependencies = "nvim-tree/nvim-web-devicons",
+	dependencies = "echasnovski/mini.nvim",
 	opts = { version = "*", event = "UIEnter" },
 	config = function(opts)
 		-- local highlights = require("nord").bufferline.highlights({
